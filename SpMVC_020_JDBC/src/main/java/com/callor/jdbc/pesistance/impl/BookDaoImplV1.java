@@ -4,10 +4,15 @@ import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.callor.jdbc.model.BookVO;
 import com.callor.jdbc.pesistance.BookDao;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Repository("bookDaoV1")
 public class BookDaoImplV1 implements BookDao{
 
 	// jdbc-context.xml에 선언된 jdbcTeplate bean 사용하기
@@ -25,11 +30,12 @@ public class BookDaoImplV1 implements BookDao{
 		
 		String sql = " SELECT * FROM tbl_books ";
 		
-		List<BookVO> books = JdbcTemplate.query(sql, 
+		List<BookVO> bookList = JdbcTemplate.query(sql, 
 				new BeanPropertyRowMapper<BookVO>(BookVO.class)
 		);
-		
-		return null;
+	
+		log.debug("BookList {}", bookList.toString());
+		return bookList;
 	}
 
 	@Override
