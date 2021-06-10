@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+
+section#main_sec {
+	width: 100%;
+	margin: 5px auto;
+	border: 1px solid #999;
+	display: flex;
+
+	/*justify-content: space-around;*/
+}
+
+section#main_sec article {
+	flex: 1;
+	border: 1px solid green;
+	margin: 6px 3px;
+}
+
+section#main_sec article ul, section#main_sec article ol {
+	margin: 0 10px;
+	padding: 0;
+}
+
+section#main_sec article li {
+	margin: 0 20px;
+	padding: 0 1px;
+}
+
+section#ad_sec {
+	width: 100%;
+	border: 1px solid #999;
+	display: flex;
+}
+
+section#ad_sec article {
+	flex: 1;
+	height: 300px;
+	margin: 6px 3px;
+	background-size: 100% 100%; /*cover로 설정이 되지않으면 옆과같이 설정*/
+	border-radius: 5px
+}
+
+/*
+			어떤 요소의 순서대로 속성을 지정할때
+			nth-child(순서), nth-of-type(순서)
+			 다음과 같이 tag가 구성되어 있을때
+				<div>
+					<p>1
+					<p>2
+					<div>3
+					<p>
+				</div>
+				
+			 div p:nth-chlid(4)를 사용하겠다 한다면 <p>4 tag를 지정한다.
+			 즉	 nth-chlid는 무조건 포함된 tag에 모두 일련번호를 부여한다
+			 
+			 div p:nth-of-type(3)를 사용하겠다 한다면 <p>4 tag를 지정한다.
+			 즉  nth-of-type은 포함된 tag중에 지정한 tag만 일련번호를 부여한다
+			 
+		*/
+
+/*
+home.jsp의
+ 중간 부분 이미지를 표현하는 부분의 CSS는
+ rootPath 문제로 여기에 둘수 없어서 include_header.jspf 파일에 옮겼다
+*/		
+		
