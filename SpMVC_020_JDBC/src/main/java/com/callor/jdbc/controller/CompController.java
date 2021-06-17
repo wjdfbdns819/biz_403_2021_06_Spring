@@ -1,7 +1,9 @@
 package com.callor.jdbc.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +26,17 @@ public class CompController {
 		this.compService = compService;
 	}
 	
+	@RequestMapping(value={"/","" }, method=RequestMethod.GET)
+	public String list(HttpSession hSession, Model model) {
+		
+		if(hSession.getAttribute("USERVO") == null) {
+			
+			model.addAttribute("MSG", "LOGIN");
+			return "redirect:/member/login";
+		}
+		return "comp/list";
+	}
+	
 	// localhost:8080/jdbc/comp/insert로 호출되는 함수
 	@RequestMapping(value = "/insert", method =RequestMethod.GET)
 	public String insert() {
@@ -43,7 +56,7 @@ public class CompController {
 	@RequestMapping(value = "/update", method =RequestMethod.GET)
 	public String update() {
 		
-		return "comp/update";
+		return "comp/input";
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)

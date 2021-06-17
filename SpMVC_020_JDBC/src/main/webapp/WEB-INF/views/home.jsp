@@ -12,7 +12,7 @@
 </head>
 	<%@ include file="/WEB-INF/views/include/include_head.jspf" %>
 <body>
-	<%@ include file="/WEB-INF/views/include/inclue_header.jspf" %>
+	<%@ include file="/WEB-INF/views/include/include_header.jspf" %>
 	<section id="main_sec">
 		<article>
 			<h3>출판사</h3>

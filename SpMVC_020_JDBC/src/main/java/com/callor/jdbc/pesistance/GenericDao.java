@@ -2,6 +2,8 @@ package com.callor.jdbc.pesistance;
 
 import java.util.List;
 
+import com.callor.jdbc.model.AuthorVO;
+
 /*
  * 제네릭
  *  인터페이스의 부모역할을 하는 super interface임

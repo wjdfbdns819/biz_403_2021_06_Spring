@@ -7,6 +7,6 @@ import com.callor.jdbc.model.AuthorVO;
 public interface AuthorDao extends GenericDao<AuthorVO, String>{
 
 	//작가 코드로 조회
-	public AuthorVO findById(String pk);
+	public List<AuthorVO> findByName(String aname);
 	public List<AuthorVO> findByTel(String atel);
 }

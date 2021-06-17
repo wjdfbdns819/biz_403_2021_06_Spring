@@ -15,27 +15,34 @@ import lombok.extern.slf4j.Slf4j;
 @Repository("bookDaoV1")
 public class BookDaoImplV1 implements BookDao{
 
-	// jdbc-context.xml에 선언된 jdbcTeplate bean 사용하기
-	protected final JdbcTemplate JdbcTemplate;
+	// Console로 log를 찍기 위하여 log 객체 생성	
+	// lombok @Slf4j 를 사용하여 아래 코드를 대신한다
+	//	private static Logger log 
+	//			= LoggerFactory.getLogger("SERVICE");
 	
-	public BookDaoImplV1( JdbcTemplate jdbcTemplate) {
-		
-		this.JdbcTemplate = jdbcTemplate;
-		
+	// jdbc-context.xml 에 선언된 jdbcTemplate bean 사용하기
+	protected final JdbcTemplate jdbcTemplate;
+	public BookDaoImplV1(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	}
+
 	
 	@Override
 	public List<BookVO> selectAll() {
 		// TODO Auto-generated method stub
 		
+		// TODO Auto-generated method stub
 		String sql = " SELECT * FROM tbl_books ";
-		
-		List<BookVO> bookList = JdbcTemplate.query(sql, 
-				new BeanPropertyRowMapper<BookVO>(BookVO.class)
+		/*
+		 * jdbcTemplate.query(sql,return type)
+		 * sql문을 실행한 후 return type형태로 데이터를
+		 * 변환하여 return 해달라
+		 */
+		List<BookVO> books = jdbcTemplate.query(sql,
+				new BeanPropertyRowMapper<BookVO>(BookVO.class)				
 		);
-	
-		log.debug("BookList {}", bookList.toString());
-		return bookList;
+		log.debug("SELECT {}",books.toString());
+		return null;
 	}
 
 	@Override
