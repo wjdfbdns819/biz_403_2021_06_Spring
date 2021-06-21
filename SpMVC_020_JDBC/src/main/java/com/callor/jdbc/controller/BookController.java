@@ -25,10 +25,10 @@ public class BookController {
 		UserVO userVO = (UserVO)obj;
 		
 		// USERVO 정보가 없으면
-		if(userVO == null) {	
-			model.addAttribute("MSG", "LOGIN");
-			return "redirect:/member/login";
-		}
+//		if(userVO == null) {	
+//			model.addAttribute("MSG", "LOGIN");
+//			return "redirect:/member/login";
+//		}
 		
 		log.debug("Books Root");
 		return "books/list";

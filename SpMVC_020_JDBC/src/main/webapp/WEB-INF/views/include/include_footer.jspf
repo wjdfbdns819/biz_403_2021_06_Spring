@@ -18,3 +18,8 @@ address {
 
 	<address>CopyRingt &copy; wjdfbdns@naver.com</address>
 </footer>
+
+<div id="modal">
+		<span>X</span>
+		
+</div>

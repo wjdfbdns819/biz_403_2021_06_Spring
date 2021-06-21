@@ -22,6 +22,12 @@ section#main_sec article ul, section#main_sec article ol {
 section#main_sec article li {
 	margin: 0 20px;
 	padding: 0 7px;
+	
+	max-width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	
 }
 
 section#ad_sec {
@@ -73,4 +79,6 @@ section#ad_sec article {
 	rootPath 문제로 여기에 둘수 없어서
 	include_header.jspf 파일에 옮겼다
 */
+
+
 
