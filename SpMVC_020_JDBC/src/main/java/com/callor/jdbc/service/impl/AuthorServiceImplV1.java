@@ -1,5 +1,4 @@
 package com.callor.jdbc.service.impl;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,18 @@ public class AuthorServiceImplV1 implements AuthorService{
 	@Override
 	public List<AuthorVO> findByATel(String au_tel) {
 		// TODO Auto-generated method stub
-		return null;
+		return auDao.findByATel(au_tel.trim());
+	}
+
+	@Override
+	public List<AuthorVO> findByNameAndTel(String au_text) {
+		List<AuthorVO> nameList = auDao.findByAName(au_text);
+		List<AuthorVO> telList = auDao.findByATel(au_text);
+		
+		// nameList에 telList를 통째로 합치기
+		nameList.addAll(telList);
+		return nameList;
+		
 	}
 
 }

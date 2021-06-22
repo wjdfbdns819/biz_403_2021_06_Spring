@@ -149,7 +149,7 @@ public class CompDaoImplV1 implements CompDao{
 		
 		// 오라클의 경우 
 		// WHERE cp_code LIKE '%' || '%' 으로 사용
-		sql += " WHERE cp_name LIKE CONCAT('%', ? '%') "; // mysql
+		sql += " WHERE cp_title LIKE CONCAT('%', ? '%') "; // mysql
 		
 		
 		// SELECT를 수행한 후 각각의 데이터를 compVO에 담고,
@@ -165,14 +165,43 @@ public class CompDaoImplV1 implements CompDao{
 
 	@Override
 	public List<CompVO> findByTel(String tel) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String sql = " SELECT * FROM tbl_company ";
+		
+	
+		sql += " WHERE cp_tel LIKE CONCAT('%', ? '%') "; // mysql
+		
+		
+		// SELECT를 수행한 후 각각의 데이터를 compVO에 담고,
+		// List에 add하여 return 한후
+		// compList에 받기
+		List<CompVO> compList
+			= jdbcTemplate.query(sql, new Object[] {tel},
+					new BeanPropertyRowMapper<CompVO>(CompVO.class)
+					);
+		
+		return compList;
+		
 	}
 
 	@Override
 	public List<CompVO> findByCeo(String ceo) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String sql = " SELECT * FROM tbl_company ";
+		
+	
+		sql += " WHERE cp_ceo LIKE CONCAT('%', ? '%') "; // mysql
+		
+		
+		// SELECT를 수행한 후 각각의 데이터를 compVO에 담고,
+		// List에 add하여 return 한후
+		// compList에 받기
+		List<CompVO> compList
+			= jdbcTemplate.query(sql, new Object[] {ceo},
+					new BeanPropertyRowMapper<CompVO>(CompVO.class)
+					);
+		
+		return compList;
 	}
 
 }
