@@ -22,7 +22,7 @@ form#book_input span.name {
 <script>
 	var rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/book_input.js?ver=2021-06-22-024"></script>
+<script src="${rootPath}/static/js/book_input.js?ver=2021-06-23-002"></script>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf" %>
 	<section class="main_sec">
