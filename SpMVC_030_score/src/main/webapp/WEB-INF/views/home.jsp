@@ -41,7 +41,8 @@ section#main_sec {
 	width: 100wv;
 	display: flex;
 	flex-direction: column;
-	background: linear-gradient(to bottom, blue, green);
+	background: linear-gradient(to bottom, black, white);
+	/*background: linear-gradient(to bottom, blue, green);*/
 	background-size: 100% 100%;
 	background-attachment: fixed;
 }
@@ -160,19 +161,46 @@ form input:hover {
 	background: #bbb; 
 }
 
-form button.save {
+button.save {
 	background-color: blue;
 	color: white;
 }
 
-form button.reset {
+button.reset {
 	background-color: olive;
 	color: white;
 }
 
-form button.list {
+button.list {
 	background-color: green;
 	color: white;
+}
+
+button.home{
+	background-color: blue;
+	color: white;
+	text-shadow: 1px 1px 1px black;
+}
+
+button.insert {
+ background-color: rgba(0,0,200,1);
+ color: white;
+}
+
+button.update {
+	background-color: green;
+	color: white;
+}
+
+button.delete {
+	background-color: red;
+	color: white;
+}
+
+button.student.list {
+	background-color: orange;
+	color: white;
+	text-shadow: 1px 1px 1px black;
 }
 </style>
 <body>
@@ -196,6 +224,10 @@ form button.list {
 
 			<c:when test="${BODY == 'STUDENT_INPUT'}">
 				<%@ include file="/WEB-INF/views/student/input.jsp" %>
+			</c:when>
+			
+			<c:when test="${BODY == 'STUDENT_DETAIL'}">
+				<%@ include file="/WEB-INF/views/student/detail.jsp" %>
 			</c:when>
 				
 			<c:otherwise>
@@ -242,7 +274,25 @@ form button.list {
 		 });	
 	}
 	
+	let table =	document.querySelector("table.detail")
+	if(table) {
+		table.addEventListener("click",(e) =>{
+			
+			let target = e.target
+			let tagName = target.tagName
+			
+		if(tagName === "TD") {
+			let tr = target.closest("TR")
+			let stNum = tr.dataset.stnum
+			location.href = "${rootPath}/student/detail?st_num="+stNum
+				
+			//alert(stNum);
+		}	
+	})
 	
+		
+		
+}	
 
 	 
 </script>
