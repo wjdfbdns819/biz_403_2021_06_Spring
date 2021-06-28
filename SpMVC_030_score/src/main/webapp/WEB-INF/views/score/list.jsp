@@ -18,7 +18,7 @@ button.score.student {
 <h1>성적 list</h1>
 <table class="score_list detail">
 	<tr id="title">
-		<th>글번호</th>
+		
 		<th>학번</th>
 		<th>이름</th>
 		<th>과목코드</th>
@@ -36,7 +36,7 @@ button.score.student {
 		<c:otherwise>
 			<c:forEach items="${scAllList}" var="SC">
 				<tr data-stnum="${SC.sc_stnum}">
-					<td>${SC.sc_seq}</td>
+					
 					<td>${SC.sc_stnum}</td>
 					<td>${SC.sc_stname}</td>
 					<td>${SC.sc_sbcode}</td>
