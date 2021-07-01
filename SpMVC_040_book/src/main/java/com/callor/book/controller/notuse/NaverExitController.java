@@ -22,8 +22,8 @@ import lombok.RequiredArgsConstructor;
 public class NaverExitController {
 	
 	
-	protected final NaverBookService<BookDTO> nBookService;
-	public NaverExitController(@Qualifier("naverServiceV1") NaverBookService<BookDTO> nBookService) {
+	protected final NaverBookService nBookService;
+	public NaverExitController(@Qualifier("naverServiceV1") NaverBookService nBookService) {
 	
 		this.nBookService = nBookService;
 	}
