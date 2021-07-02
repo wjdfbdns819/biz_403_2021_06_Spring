@@ -14,9 +14,12 @@ import com.callor.book.dao.ext.BookDao;
 import com.callor.book.model.BookDTO;
 import com.callor.book.service.BookService;
 import com.callor.book.service.NaverAbstractService;
+import com.mysql.cj.log.Log;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class BookServiceImplV1 implements BookService {
@@ -42,6 +45,17 @@ public class BookServiceImplV1 implements BookService {
 		bookDao.insert(book);
 		
 		return 0;
+	}
+	
+	
+	public List<BookDTO> selectAll() {
+		
+		List<BookDTO> bkList = bookDao.selectAll();
+		
+		log.debug("Service에 담긴 List 정보 : {}", bkList.toString());
+		
+		return bkList;
+		
 	}
 
 }
