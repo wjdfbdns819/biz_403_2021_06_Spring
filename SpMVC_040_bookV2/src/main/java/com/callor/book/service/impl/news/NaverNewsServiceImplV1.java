@@ -21,7 +21,7 @@ import com.google.gson.reflect.TypeToken;
 public class NaverNewsServiceImplV1 extends NaverAbstractService<NewsDTO>{
 
 	@Override
-	public String queryURL(String search) throws UnsupportedEncodingException {
+	public String queryURL(String search) throws Exception {
 		String queryURL = NaverSecret.Nurl.NEWS;
 		queryURL += "?query=%s&display=10";
 		
@@ -31,7 +31,7 @@ public class NaverNewsServiceImplV1 extends NaverAbstractService<NewsDTO>{
 	}
 
 	@Override
-	public List<NewsDTO> getNaverList(String jsonString) throws ParseException {
+	public List<NewsDTO> getNaverList(String jsonString) throws Exception {
 		// TODO Auto-generated method stub
 
 		JsonElement jsonElement = JsonParser.parseString(jsonString);
