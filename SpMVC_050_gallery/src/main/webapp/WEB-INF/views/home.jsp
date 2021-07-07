@@ -7,20 +7,54 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+* {
+	/*초기화*/
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	width: 70%;
+	border: 1px solid black;
+	text-align: center;
+	font-weight: bold;
+	margin: 0 auto;
+	padding: 10px 0px;
+}
+
+div#image_link  {
+	width: 10%;
+	margin-left: 85%;
+	padding: 10px 0px;
+	border: 1px solid black;
+	text-align: center;
+}
+
+</style>
 </head>
 <body>
 	<h1>내 갤러리</h1>
 	<c:choose>
+		
 		<c:when test="${BODY eq 'GA-INPUT'}">
 			<%@ include file="/WEB-INF/views/gallery/input.jsp" %>
 		</c:when>
 		<c:when test="${BODY eq 'GA-LIST'}">
 			<%@ include file="/WEB-INF/views/gallery/list.jsp" %>
-			<a href="${rootPath}/gallery/input">이미지등록</a>
+			<div id="image_link" ><a href="${rootPath}/gallery/input">이미지등록</a></div>
 		</c:when>
+		
+		<c:when test="${BODY eq 'GA-DETAIL'}">
+			<%@ include file="/WEB-INF/views/gallery/detail.jsp" %>
+			<a href="${rootPath}/gallery">리스트로</a>
+		</c:when>
+		
 		<c:otherwise>
 					<a href="${rootPath}/gallery/input">이미지등록</a>
-			</c:otherwise>		
+			</c:otherwise>
+			
 	</c:choose>
 	
 	
@@ -30,7 +64,6 @@
 		</a>
 	</c:forEach>
 	
-	<img src="${rootPath}/files/title.jpg" width="200px"/>
 	
 
 </body>
