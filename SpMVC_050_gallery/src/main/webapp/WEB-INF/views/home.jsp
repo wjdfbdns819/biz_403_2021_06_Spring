@@ -36,6 +36,7 @@ div#image_link  {
 </head>
 <body>
 	<h1>내 갤러리</h1>
+	<%@ include file="/WEB-INF/views/include/include_nav.jspf" %>
 	<c:choose>
 		
 		<c:when test="${BODY eq 'GA-INPUT'}">
@@ -48,7 +49,14 @@ div#image_link  {
 		
 		<c:when test="${BODY eq 'GA-DETAIL'}">
 			<%@ include file="/WEB-INF/views/gallery/detail.jsp" %>
-			<a href="${rootPath}/gallery">리스트로</a>
+		</c:when>
+		
+		<c:when test="${BODY eq 'JOIN'}">
+			<%@ include file="/WEB-INF/views/member/join.jsp" %>
+		</c:when>
+		
+		<c:when test="${BODY eq 'LOGIN'}">
+			<%@ include file="/WEB-INF/views/member/login.jsp" %>
 		</c:when>
 		
 		<c:otherwise>
@@ -64,7 +72,36 @@ div#image_link  {
 		</a>
 	</c:forEach>
 	
+<script>
+	let main_nav = document.querySelector("nav#main_nav")
 	
+	// 만약 main_nav가 있으면
+	if(main_nav) {
+		
+		// event 발생
+		main_nav.addEventListener("click", (e) =>{
+			
+			let menu = e.target
+			
+			// menu에 li tag에만 event 적용
+			if(menu.tagName === "LI") {
+				
+			 if(menu.id === "join") {
+				 
+				location.href = "${rootPath}/member/join"
+			} else if(menu.id === "login") {
+				location.href = "${rootPath}/member/login"
+			} else if(menu.id === "logout") {
+				location.href = "${rootPath}/member/logout"
+			} else if(menu.id === "image_create") {
+				location.href = "${rootPath}/gallery/input"
+			} else if(menu.id === "home")
+				location.href = "${rootPath}/"
+			
+			}
+		})
+	}
+</script>
 
 </body>
 </html>
