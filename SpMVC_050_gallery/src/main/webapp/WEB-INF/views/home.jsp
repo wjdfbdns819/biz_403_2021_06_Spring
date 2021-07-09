@@ -21,6 +21,7 @@ h1 {
 	text-align: center;
 	font-weight: bold;
 	margin: 0 auto;
+	
 	padding: 10px 0px;
 }
 
@@ -35,8 +36,9 @@ div#image_link  {
 </style>
 </head>
 <body>
-	<h1>내 갤러리</h1>
 	<%@ include file="/WEB-INF/views/include/include_nav.jspf" %>
+	<h1>내 갤러리</h1>
+	
 	<c:choose>
 		
 		<c:when test="${BODY eq 'GA-INPUT'}">
@@ -49,6 +51,10 @@ div#image_link  {
 		
 		<c:when test="${BODY eq 'GA-DETAIL'}">
 			<%@ include file="/WEB-INF/views/gallery/detail.jsp" %>
+		</c:when>
+		
+		<c:when test="${BODY eq 'GA-DETAIL-V2'}">
+			<%@ include file="/WEB-INF/views/gallery/detail2.jsp" %>
 		</c:when>
 		
 		<c:when test="${BODY eq 'JOIN'}">
@@ -87,14 +93,17 @@ div#image_link  {
 			if(menu.tagName === "LI") {
 				
 			 if(menu.id === "join") {
-				 
 				location.href = "${rootPath}/member/join"
+				
 			} else if(menu.id === "login") {
-				location.href = "${rootPath}/member/login"
+				location.href = "${rootPath}/member/login/nav"
+				
 			} else if(menu.id === "logout") {
 				location.href = "${rootPath}/member/logout"
+				
 			} else if(menu.id === "image_create") {
 				location.href = "${rootPath}/gallery/input"
+				
 			} else if(menu.id === "home")
 				location.href = "${rootPath}/"
 			

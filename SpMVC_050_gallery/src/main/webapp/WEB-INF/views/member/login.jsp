@@ -12,16 +12,47 @@
   	border-radius: 20px;
   }
 
+  div.msg.plus {
+  }
+  
+  form {
+  	margin: 0 auto;
+  	margin-top: 5%;
+  	width: 60%;
+  	padding: 50px 0px;
+  	border: 1px solid black;
+  }
+  
+  form div {
+  	text-align: center;
+  	margin: 30px 0px;
+  }
+
+	div.d_id {
+	border: 1px solid black;
+	position: relative;
+	}
+	
+	div.d_id label {
+	 border: 1px solid black;
+}
+	div.d_id input {
+		position: absolute;
+		top: 30px;
+	}
+  
 </style>
 
 <form method="POST" id="login_form">
+	
 	<div class="msg login error"></div>
-	<div>
+	
+	<div class="d_id">
 		<label>사용자 ID</label>
 		<input name="m_userid">
 	</div>
 	
-	<div>
+	<div class="d_pw">
 		<label>비밀번호</label>
 		<input name="m_password" type="password">
 	</div>
@@ -30,7 +61,7 @@
 		<button type="button" class="login">로그인</button>
 		<button type="button" class="join">회원가입</button>
 	</div>
-
+	
 </form>
 
 <script>
@@ -51,14 +82,16 @@
 			
 			if(m_userid === "") {
 				
-				alert("사용자 ID는 필수 입력항목입니다")
+				msg_error.innerText = "ID는 필수 입력 항목입니다 "
+				msg_error.classList.add("plus")
 				input_userid.focus()
 				return false
 				
 			}
 			
 			if(m_password === "") {
-				alert("비밀번호는 필수 입력항목입니다")
+				msg_error.innerText = "PW는 필수 입력 항목입니다 "
+					msg_error.classList.add("plus")
 				input_password.focus()
 				return false
 			}
@@ -94,6 +127,10 @@
 		msg_error.style.backgroundColor = "red"
 		msg_error.style.padding = "2rem"*/
 		
+	} else if(login_fail === "LOGIN_REQ") {
+		msg_error.innerHTML = "로그인이 필요한 서비스 입니다<br/>"
+		msg_error.innerHTML+= "로그인을 해주세요<br/>"
+		msg_error.classList.add("view")
 	}
 	
 	

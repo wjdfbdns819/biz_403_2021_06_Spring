@@ -10,8 +10,6 @@ div.main_box {
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-
-	
 }
 
 div.ga_box {
@@ -45,12 +43,18 @@ div#con_box {
 <c:forEach items="${GALLERYS}" var="GALLERY">
 	<div class="ga_box">
 		<div id="images">
-			<img src="${rootPath}/files/${GALLERY.g_image}" width="100px" height="100px">
+			<c:if test="${empty GALLERY.g_image}">
+				<img src="${rootPath}/files/NoImage.png" width="100px">
+			</c:if>
+			
+			<c:if test="${not empty GALLERY.g_image}">
+				<img src="${rootPath}/files/${GALLERY.g_image}" width="100px" height="100px">
+			</c:if>
 		</div>
 		
 		<div id="con_box">
 			<h3>
-				<a href="${rootPath}/gallery/detail/${GALLERY.g_seq}">
+				<a href="${rootPath}/gallery/detail2/${GALLERY.g_seq}">
 					${GALLERY.g_subject}
 				</a>
 			</h3>
